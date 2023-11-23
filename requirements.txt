@@ -1,0 +1,7 @@
+transformers
+sentencepiece
+protobuf
+ninja
+flash-attn
+accelerate
+peft
