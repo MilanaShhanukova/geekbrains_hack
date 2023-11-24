@@ -1,0 +1,24 @@
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04
+
+RUN apt-get update -y
+RUN apt-get install -y python3-pip build-essential
+RUN apt-get install -y git
+# RUN apt-get install -y ffmpeg
+
+COPY docker/requirements.txt /opt/app/
+RUN pip3 install torch==2.1.0+cu118 torchvision==0.16.0+cu118 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu118
+RUN pip install -r /opt/app/requirements.txt
+
+#COPY train_data/audiofiles train_data/audiofiles
+#COPY *.py /
+#COPY *.json /
+
+RUN mkdir -p /var/log/celery/
+
+COPY docker/worker.sh /opt/app/
+COPY worker /opt/app/worker
+
+COPY docker/celeryd.conf /opt/app/celery.conf
+WORKDIR /opt/app/
+RUN chmod +x worker.sh
+CMD ["./worker.sh"]

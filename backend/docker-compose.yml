@@ -1,0 +1,71 @@
+version: '3.9'
+
+services:
+  app:
+    container_name: fsap_app
+    build: .
+    env_file:
+      - .env
+    command: bash -c "
+      uvicorn app.main:app
+      --log-config ./config.ini
+      --host 0.0.0.0 --port 8000
+      --lifespan=on --use-colors --loop uvloop --http httptools
+      --reload --log-level debug
+      "
+    volumes:
+      - .:/home/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+
+  db:
+    container_name: fsap_db
+    image: postgres:14-alpine
+    volumes:
+      - fastapi_postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    ports:
+      - 5432:5432
+    healthcheck:
+      test:
+        [
+            "CMD-SHELL", "pg_isready -d $POSTGRES_DB -U $POSTGRES_USER"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:latest
+    container_name: fsap_redis
+    ports:
+      - "6379:6379"
+    env_file:
+      - .env
+    entrypoint: redis-server --appendonly yes
+
+  celeryd: &celery
+    container_name: best-price-ke-celeryd
+    build: &celery-build
+      dockerfile: docker/Dockerfile.celeryd
+    restart: unless-stopped
+    volumes:
+      - ./worker:/opt/app/worker
+    env_file:
+      - .env
+
+  celerybeat:
+    <<: *celery
+    container_name: best-price-ke-celerybeat
+    build:
+      <<: *celery-build
+      dockerfile: docker/Dockerfile.celerybeat
+    env_file:
+      - .env
+
+volumes:
+  fastapi_postgres_data: {}
