@@ -17,6 +17,7 @@ RUN mkdir -p /var/log/celery/
 
 COPY docker/worker.sh /opt/app/
 COPY worker /opt/app/worker
+COPY docker/models /opt/app/models
 
 COPY docker/celeryd.conf /opt/app/celery.conf
 WORKDIR /opt/app/

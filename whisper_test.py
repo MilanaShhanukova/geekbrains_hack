@@ -9,13 +9,25 @@ import json
 
 DEVICE = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 
-processor = WhisperProcessor.from_pretrained("openai/whisper-large-v3")
-model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-large-v3").to(device=DEVICE)
+#processor = WhisperProcessor.from_pretrained("openai/whisper-large-v3")
+#model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-large-v3", use_flash_attention_2=True).to(device=DEVICE)
+
+# local cached file, non-docker run
+if os.path.exists('backend/docker/models/whisper-large-v3/'):
+    repo_path = "backend/docker/models/whisper-large-v3/"
+# docker run
+elif os.path.exists('models/whisper-large-v3/'):
+    repo_path = "models/whisper-large-v3/"
+# default to huggingface hub download
+else:
+    repo_path = "openai/whisper-large-v3"
+
+print(f'Loading Whisper from {repo_path}')
 
 for audio_name in os.listdir('train_data/audiofiles/'):
     pipe = pipeline(
         "automatic-speech-recognition",
-        model="openai/whisper-large-v3",
+        model=repo_path,
         chunk_length_s=30,
         device=DEVICE,
         return_timestamps=True,

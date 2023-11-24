@@ -66,16 +66,28 @@ def get_description_llm(keyword, text, model, tokenizer, device="cuda:0"):
 if __name__ == "__main__":
     device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 
-    model = AutoModelForCausalLM.from_pretrained('Open-Orca/Mistral-7B-OpenOrca', device_map=device,
-                                                torch_dtype=torch.float16, use_flash_attention_2=True)
-    tokenizer = AutoTokenizer.from_pretrained('Open-Orca/Mistral-7B-OpenOrca')
-
-    if os.path.exists('./train_data/audiofiles/'):
-        # mac
-        filepath = './train_data/audiofiles/'
+    # local cached file, non-docker run
+    if os.path.exists('backend/docker/models/Mistral-7B-OpenOrca/'):
+        repo_path = "backend/docker/models/Mistral-7B-OpenOrca/"
+    # docker run
+    elif os.path.exists('models/Mistral-7B-OpenOrca/'):
+        repo_path = "models/Mistral-7B-OpenOrca/"
+    # default to huggingface hub download
     else:
-        # win
+        repo_path = "Open-Orca/Mistral-7B-OpenOrca"
+
+    print(f'Loading LLM from {repo_path}')
+    model = AutoModelForCausalLM.from_pretrained(repo_path, device_map=device,
+                                                 torch_dtype=torch.float16, use_flash_attention_2=True)
+    tokenizer = AutoTokenizer.from_pretrained(repo_path)
+
+    # mac
+    if os.path.exists('./train_data/audiofiles/'):
+        filepath = './train_data/audiofiles/'
+    # win
+    else:
         filepath = 'train_data/audiofiles/'
+
     for name in os.listdir(filepath):
         with open(str.replace(name, ".mp3", ".json"), 'r', encoding='utf-8') as jsf:
             text = json.load(jsf)
