@@ -6,3 +6,4 @@ flash-attn
 accelerate
 peft
 spacy
+keyword-spacy

@@ -8,7 +8,9 @@ RUN apt-get install -y git
 
 RUN pip3 install torch==2.1.0+cu118 torchvision==0.16.0+cu118 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu118
 COPY docker/requirements.txt /opt/app/
+RUN pip install packaging
 RUN pip install -r /opt/app/requirements.txt
+RUN pip install https://huggingface.co/spacy/ru_core_news_sm/resolve/main/ru_core_news_sm-any-py3-none-any.whl
 
 #COPY train_data/audiofiles train_data/audiofiles
 #COPY *.py /
