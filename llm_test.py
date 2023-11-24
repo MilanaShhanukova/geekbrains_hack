@@ -6,7 +6,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import json
 
 
-def get_key_llm(text, model, tokenizer, device, name):
+def get_key_llm(text, model, tokenizer, device, name, gen_description=True):
     with torch.inference_mode():
         answer_list = []
         description_dict = {}
@@ -35,20 +35,22 @@ def get_key_llm(text, model, tokenizer, device, name):
             print(answer)
             answer_list.append(str.strip(answer))
 
-            for keyword in str.split(str.strip(answer), ','):
-                description_dict[keyword] = get_description_llm(keyword, context, model, tokenizer, device)
+            if gen_description:
+                for keyword in str.split(str.strip(answer), ','):
+                    description_dict[keyword] = get_description_llm(keyword, context, model, tokenizer, device)
 
         with open(f'{str.replace(name, ".mp3", "_keywords.json")}', 'w', encoding='utf-8') as jsf:
             json.dump(answer_list, jsf, ensure_ascii=False, indent=4)
-        with open(f'{str.replace(name, ".mp3", "_descriptions.json")}', 'w', encoding='utf-8') as jsf:
-            json.dump(description_dict, jsf, ensure_ascii=False, indent=4)
+        if gen_description:
+            with open(f'{str.replace(name, ".mp3", "_descriptions.json")}', 'w', encoding='utf-8') as jsf:
+                json.dump(description_dict, jsf, ensure_ascii=False, indent=4)
 
     answer_full_list = []
     for ans in answer_list:
         split_ans = str.split(ans, ',')
         for s in split_ans:
-            if str.replace(s, '.', '') not in answer_full_list:
-                answer_full_list.append(str.replace(s, '.', ''))
+            if str.replace(str.strip(s), '.', '') not in answer_full_list:
+                answer_full_list.append(str.replace(str.strip(s), '.', ''))
     return answer_full_list
 
 def get_key_stage2_llm(keywords, text, model, tokenizer, device, name):
@@ -174,6 +176,7 @@ def get_key_stage2_llm(keywords, text, model, tokenizer, device, name):
             answer_split = str.split(answer, '\n')
             chars_to_remove = ['[', ']', '"', ',', '.', '\'']
             #print(answer_split)
+            added = 0
             for ans in answer_split:
                 #cleaned = str.strip(ans)
                 #cleaned = ans[4:]
@@ -183,9 +186,10 @@ def get_key_stage2_llm(keywords, text, model, tokenizer, device, name):
                 if '"' in ans:
                     cleaned = str.split(ans, '"')[1]
                     #print(cleaned)
-                    if not cleaned in answer_list and len(cleaned) > 0:
+                    if not cleaned in answer_list and len(cleaned) > 0 and added < 3:
                         print(cleaned)
                         answer_list.append(cleaned)
+                        added = added + 1
 
         with open(f'{str.replace(name, ".mp3", "_keywords_cleaned.json")}', 'w', encoding='utf-8') as jsf:
             json.dump(answer_list, jsf, ensure_ascii=False, indent=4)

@@ -54,6 +54,7 @@ def get_keywords(
     keywords_folder: str,
     modes=["llm", "keybert", "tfidf", "spacy"],
     all_paths={"llm": "./model_path", "keybert": "all-MiniLM-L6-v2"},
+    gen_description=True,
 ) -> list:
     all_key_words = []
 
@@ -77,7 +78,7 @@ def get_keywords(
         else:
             # load model every time (?)
             model_llm, tokenizer_llm, device = get_model_and_tokenizer()
-            keywords = get_key_llm({'text': raw_text}, model_llm, tokenizer_llm, device, lecture_name)
+            keywords = get_key_llm({'text': raw_text}, model_llm, tokenizer_llm, device, lecture_name, gen_description=gen_description)
             del model_llm, tokenizer_llm, device
         all_key_words.extend(keywords)
 
