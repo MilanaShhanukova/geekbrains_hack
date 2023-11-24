@@ -28,6 +28,8 @@ def filter_keywords(keywords: list, text: str, common_words: list):
 
     median_value = np.median(list(ngram_frequencies.values()))
 
+    keywords = list(set(keywords))
+
     # if it's a rare word, do not add it 
     print(f"Length of keywords BEFORE filtering common in text {len(keywords)}")
     keywords = [k for k in keywords if ngram_frequencies[k] <= median_value]
