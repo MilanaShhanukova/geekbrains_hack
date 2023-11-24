@@ -15,6 +15,7 @@ services:
       "
     volumes:
       - .:/home/code
+      - ./tmp:/tmp
     ports:
       - "8000:8000"
     depends_on:
@@ -26,6 +27,7 @@ services:
     image: postgres:14-alpine
     volumes:
       - fastapi_postgres_data:/var/lib/postgresql/data
+      - ./tmp:/tmp
     env_file:
       - .env
     ports:
@@ -55,17 +57,21 @@ services:
     restart: unless-stopped
     volumes:
       - ./worker:/opt/app/worker
+      - ./app:/opt/app/app
+      - ./tmp:/opt/app/tmp
     env_file:
       - .env
 
-  celerybeat:
-    <<: *celery
-    container_name: celerybeat
-    build:
-      <<: *celery-build
-      dockerfile: docker/Dockerfile.celerybeat
-    env_file:
-      - .env
+#  celerybeat:
+##    <<: *celery
+#    container_name: celerybeat
+#    build:
+##      <<: *celery-build
+#      dockerfile: docker/Dockerfile.celerybeat
+#    depends_on:
+#      - celeryd
+#    env_file:
+#      - .env
 
   flower:
     container_name: celery-flower
@@ -76,7 +82,6 @@ services:
       - 5557:5555
     depends_on:
       - redis
-      - celerybeat
       - celeryd
 
 volumes:

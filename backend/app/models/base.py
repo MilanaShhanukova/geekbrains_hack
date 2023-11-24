@@ -28,6 +28,18 @@ class Base(DeclarativeBase):
         except SQLAlchemyError as ex:
             raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=repr(ex)) from ex
 
+    def save_sync(self, db_session):
+        """
+
+        :param db_session:
+        :return:
+        """
+        try:
+            db_session.add(self)
+            return db_session.commit()
+        except SQLAlchemyError as ex:
+            raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=repr(ex)) from ex
+
     async def delete(self, db_session: AsyncSession):
         """
 
