@@ -22,7 +22,9 @@ for f in os.listdir(test_dir):
             json.dump(text, jsf, ensure_ascii=False, indent=4)
 
         # 2 step keyword_result + глоссарий мб
-        keywords = get_keywords(text['text'], f, save_dir_raw, gen_description=False)
+        keywords, description = get_keywords(text['text'], f, save_dir_raw, gen_description=True)
+        if description is not None:
+            pass
         with open(os.path.join(save_dir_key, f'{f[:-4]}.json'), 'w', encoding='utf-8') as jsf:
             json.dump(keywords, jsf, ensure_ascii=False, indent=4)
 

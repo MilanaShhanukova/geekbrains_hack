@@ -51,7 +51,7 @@ def get_key_llm(text, model, tokenizer, device, name, gen_description=True):
         for s in split_ans:
             if str.replace(str.strip(s), '.', '') not in answer_full_list:
                 answer_full_list.append(str.replace(str.strip(s), '.', ''))
-    return answer_full_list
+    return answer_full_list, description_dict
 
 def get_key_stage2_llm(keywords, text, model, tokenizer, device, name):
     with torch.inference_mode():
