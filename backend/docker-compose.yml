@@ -55,6 +55,13 @@ services:
     build: &celery-build
       dockerfile: docker/Dockerfile.celeryd
     restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu, utility ]
     volumes:
       - ./worker:/opt/app/worker
       - ./app:/opt/app/app

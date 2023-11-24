@@ -16,13 +16,17 @@ file_list = []
 key_list = []
 for f in os.listdir(test_dir):
     if '.mp3' in f:
+        # 1 step whisper_result
         text = process_file_whisper(os.path.join(test_dir, f))
         with open(os.path.join(save_dir_raw, f'{f[:-4]}.json'), 'w', encoding='utf-8') as jsf:
             json.dump(text, jsf, ensure_ascii=False, indent=4)
+
+        # 2 step keyword_result + глоссарий мб
         keywords = get_keywords(text['text'], f, save_dir_raw, gen_description=False)
         with open(os.path.join(save_dir_key, f'{f[:-4]}.json'), 'w', encoding='utf-8') as jsf:
             json.dump(keywords, jsf, ensure_ascii=False, indent=4)
 
+        # 3 step keyword_result
         keywords_filtered, english_words = filter_file(f'{save_dir_raw}{f[:-4]}.json',
                                                        f'{save_dir_key}{f[:-4]}.json', '')
 

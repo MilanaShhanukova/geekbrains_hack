@@ -1,16 +1,20 @@
-FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04 as celeryd_base
 
 RUN apt-get update -y
 RUN apt-get install -y python3-pip build-essential
 RUN apt-get install -y git
-# RUN apt-get install -y ffmpeg
+
 
 
 RUN pip3 install torch==2.1.0+cu118 torchvision==0.16.0+cu118 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu118
 COPY docker/requirements.txt /opt/app/
-RUN pip install packaging
-RUN pip install -r /opt/app/requirements.txt
-RUN pip install https://huggingface.co/spacy/ru_core_news_sm/resolve/main/ru_core_news_sm-any-py3-none-any.whl
+RUN pip3 install packaging
+RUN pip3 install -r /opt/app/requirements.txt
+RUN pip3 install https://huggingface.co/spacy/ru_core_news_sm/resolve/main/ru_core_news_sm-any-py3-none-any.whl
+RUN pip3 install psycopg2-binary
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y ffmpeg
+COPY docker/requirements2.txt /opt/app/
+RUN pip3 install -r /opt/app/requirements2.txt
 
 #COPY train_data/audiofiles train_data/audiofiles
 #COPY *.py /
@@ -21,6 +25,9 @@ RUN mkdir -p /var/log/celery/
 COPY docker/worker.sh /opt/app/
 COPY worker /opt/app/worker
 COPY docker/models /opt/app/models
+COPY app /opt/app/app
+
+from celeryd_base as celerybeat_base
 
 COPY docker/celeryd.conf /opt/app/celery.conf
 WORKDIR /opt/app/

@@ -32,7 +32,7 @@ class User(Base):
         return pwd_context.verify(password, self.password)
 
     @classmethod
-    async def find(cls, database_session: AsyncSession, where_conditions: list[Any]):
+    async def find(cls, database_session: AsyncSession, where_conditions):
         _stmt = select(cls).where(*where_conditions)
         _result = await database_session.execute(_stmt)
         return _result.scalars().first()

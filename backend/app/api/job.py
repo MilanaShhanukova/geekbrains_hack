@@ -3,13 +3,14 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.celery import celery_app
 from app.database import get_db
 from app.models.job import Job
 from app.schemas.job import JobResponse, JobSchema
 from app.services.auth import AuthBearer
 
 from fastapi import UploadFile
-from worker.tasks import first_task
+
 
 router = APIRouter(prefix="/v1/job", tags=["JOB, Bearer"], dependencies=[Depends(AuthBearer())])
 
@@ -19,7 +20,9 @@ async def create_job(audio_file: UploadFile, db_session: AsyncSession = Depends(
     job = Job(status="created",
               audio_file=audio_file)
     await job.save(db_session)
-    first_task.delay()
+    celery_app.send_task('worker.tasks.tasks.whisper_task',
+                  kwargs={"job_id": job.id})
+
     return job
 
 @router.get("/status", status_code=status.HTTP_200_OK, response_model=JobResponse)

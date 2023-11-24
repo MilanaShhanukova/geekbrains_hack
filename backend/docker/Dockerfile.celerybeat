@@ -1,9 +1,4 @@
-FROM python:3.10.13-slim-bookworm AS base
-RUN mkdir -p /var/log/celery/
-
-COPY docker/beat.sh /opt/app/
-COPY docker/requirements.txt /opt/app/
-RUN pip install -r /opt/app/requirements.txt
+FROM celerybeat_base
 
 COPY docker/celerybeat.conf /opt/app/celery.conf
 WORKDIR /opt/app/
