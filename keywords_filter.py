@@ -56,14 +56,16 @@ def filter_keywords(keywords: list, text: str, common_words: list):
 
 
 def filter_file(lecture_text_path: str, keywords_path: str, save_dir: str):
-    with open("./10000-russian-words.txt") as f:
+    with open("./10000-russian-words.txt", encoding='utf-8') as f:
         common_words = f.read().splitlines()
+    #print(common_words)
+    #exit()
 
     lecture_num = lecture_text_path.split('/')[-1][:-5]
-    with open(lecture_text_path) as f:
+    with open(lecture_text_path, encoding='utf-8') as f:
         text = json.load(f)["text"]
 
-    with open(keywords_path) as f:
+    with open(keywords_path, encoding='utf-8') as f:
         lecture_keywords = json.load(f)
 
     keywords_filtered, english_words = filter_keywords(lecture_keywords, text, common_words)
@@ -73,3 +75,5 @@ def filter_file(lecture_text_path: str, keywords_path: str, save_dir: str):
     
     with open(os.path.join(save_dir, lecture_num + "_keywords_english.json"), 'w', encoding='utf-8') as jsf:
         json.dump(english_words, jsf, ensure_ascii=False, indent=4)
+
+    return keywords_filtered, english_words

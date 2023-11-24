@@ -8,7 +8,8 @@ import json
 import os
 import re
 import argparse
-from llm_test import get_key_llm
+from llm_test import get_key_llm, get_model_and_tokenizer, get_key_stage2_llm
+from keywords_filter import filter_file
 from tqdm import tqdm
 import glob
 
@@ -58,22 +59,26 @@ def get_keywords(
 
     # clean text
     nlp_spacy = spacy.load("ru_core_news_sm")  # should be downloaded first?
+    raw_text = text
     text = re.sub(r"[^\w\s]", "", text)
     text = " ".join([w.lemma_ for w in nlp_spacy(text.lower()) if not w.is_stop])
 
     if "llm" in modes:
         print("Start processing LLM keywords")
+        print(keywords_folder)
         llm_keywords_file = os.path.join(
             keywords_folder, lecture_name + "_llm" + ".json"
         )
         print(llm_keywords_file)
 
         if os.path.exists(llm_keywords_file):
-            with open(llm_keywords_file) as f:
+            with open(llm_keywords_file, encoding='utf-8') as f:
                 keywords = json.load(f)
         else:
             # load model every time (?)
-            keywords = get_key_llm(model_llm, tokenizer_llm, text)
+            model_llm, tokenizer_llm, device = get_model_and_tokenizer()
+            keywords = get_key_llm({'text': raw_text}, model_llm, tokenizer_llm, device, lecture_name)
+            del model_llm, tokenizer_llm, device
         all_key_words.extend(keywords)
 
     # keybert
@@ -109,14 +114,37 @@ def get_keywords(
 def parse_files(files_folder: str, save_dir: str):
 
     for f_path in tqdm(glob.iglob(f"{files_folder}/*.json")):
-        with open(f_path) as f:
+        with open(f_path, encoding='utf-8') as f:
             text = json.load(f)["text"]
 
         file_name = f_path.split("/")[-1]
+        file_name = file_name.split("\\")[-1]
+        print(file_name)
 
-        lecture_keywords = get_keywords(text, file_name[:-5], 
-                                "./data/textfiles/keywords/")
+        # win
+        if os.path.exists('data/textfiles/keywords/'):
+            filepath = 'data/textfiles/keywords/'
+        # mac
+        else:
+            filepath = './data/textfiles/keywords/'
+
+        lecture_keywords = get_keywords(text, file_name[:-5], filepath)
 
         with open(os.path.join(save_dir, file_name), 'w', encoding='utf-8') as jsf:
             lecture_keywords = list(set([d.strip() for d in lecture_keywords if len(d) > 2]))
             json.dump(lecture_keywords, jsf, ensure_ascii=False, indent=4)
+
+        print(file_name)
+        keywords_filtered, english_words = filter_file(f'data/textfiles/raw/{file_name}', f'data/textfiles/keywords/{file_name}', '')
+
+        with open(os.path.join(save_dir, f'{file_name[:-5]}_final_keywords.json'), 'w', encoding='utf-8') as jsf:
+            model_llm, tokenizer_llm, device = get_model_and_tokenizer()
+            final_keywords = get_key_stage2_llm(keywords_filtered, {'text': text}, model_llm, tokenizer_llm, device, file_name)
+            del model_llm, tokenizer_llm, device
+            json.dump(final_keywords, jsf, ensure_ascii=False, indent=4)
+
+if __name__ == "__main__":
+    parse_files('data/textfiles/raw/', 'data/textfiles/keywords/')
+
+
+
