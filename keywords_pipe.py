@@ -78,7 +78,7 @@ def get_keywords(
         else:
             # load model every time (?)
             model_llm, tokenizer_llm, device = get_model_and_tokenizer()
-            keywords = get_key_llm({'text': raw_text}, model_llm, tokenizer_llm, device, lecture_name, gen_description=gen_description)
+            keywords, description = get_key_llm({'text': raw_text}, model_llm, tokenizer_llm, device, lecture_name, gen_description=gen_description)
             del model_llm, tokenizer_llm, device
         all_key_words.extend(keywords)
 
@@ -109,7 +109,10 @@ def get_keywords(
         keywords = get_keywords_spacy(text, nlp_spacy)
         all_key_words.extend(keywords)
 
-    return all_key_words
+    if description is not None:
+        return all_key_words, description
+    else:
+        return all_key_words
 
 
 def parse_files(files_folder: str, save_dir: str):
