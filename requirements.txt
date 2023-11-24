@@ -5,3 +5,4 @@ ninja
 flash-attn
 accelerate
 peft
+spacy
