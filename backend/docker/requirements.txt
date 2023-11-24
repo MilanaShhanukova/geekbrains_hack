@@ -2,3 +2,10 @@ packaging
 watchdog==2.1.9
 celery[redis]==5.3.5
 transformers
+sentencepiece
+protobuf
+ninja
+flash-attn
+accelerate
+peft
+spacy
