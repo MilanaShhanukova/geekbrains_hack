@@ -117,11 +117,6 @@ def parse_files(files_folder: str, save_dir: str):
         lecture_keywords = get_keywords(text, file_name[:-5], 
                                 "./data/textfiles/keywords/")
 
-
         with open(os.path.join(save_dir, file_name), 'w', encoding='utf-8') as jsf:
             lecture_keywords = list(set([d.strip() for d in lecture_keywords if len(d) > 2]))
             json.dump(lecture_keywords, jsf, ensure_ascii=False, indent=4)
-
-if __name__ == "__main__":
-    parse_files("./train_data/textfiles/raw",
-            "./train_data/textfiles/keywords")
