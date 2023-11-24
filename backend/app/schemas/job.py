@@ -7,11 +7,11 @@ config = ConfigDict(from_attributes=True)
 
 class JobSchema(BaseModel):
     model_config = config
-    name: str = Field(
+    status: str = Field(
         title="",
         description="",
     )
-    definition: str = Field(
+    date_started: str = Field(
         title="",
         description="",
     )
@@ -32,14 +32,11 @@ class JobResponse(BaseModel):
         title="Id",
         description="",
     )
-    name: str = Field(
+    status: str = Field(
         title="",
         description="",
     )
-    definition: str = Field(
-        title="",
-        description="",
-    )
+
 
     # class Config:
     #     from_attributes = True

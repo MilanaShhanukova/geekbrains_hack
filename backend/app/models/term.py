@@ -11,8 +11,7 @@ from app.models.base import Base
 
 class Term(Base):
     __tablename__ = "term"
-    __table_args__ = ({"schema": "default"},)
-    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, unique=True, default=uuid.uuid4, autoincrement=True)
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, unique=True, default=uuid.uuid4)
     name: Mapped[str] = mapped_column(String, unique=True)
     definition: Mapped[str | None] = mapped_column(Text)
 

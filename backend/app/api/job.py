@@ -6,16 +6,26 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.database import get_db
 from app.models.job import Job
 from app.schemas.job import JobResponse, JobSchema
+from app.services.auth import AuthBearer
 
-router = APIRouter(prefix="/v1/job")
+from fastapi import UploadFile
+from worker.tasks import first_task
+
+router = APIRouter(prefix="/v1/job", tags=["JOB, Bearer"], dependencies=[Depends(AuthBearer())])
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=JobResponse)
-async def create_job(payload: JobSchema, db_session: AsyncSession = Depends(get_db)):
-    nonsense = Job(**payload.model_dump())
-    await nonsense.save(db_session)
-    # celery_app
-    return nonsense
+async def create_job(audio_file: UploadFile, db_session: AsyncSession = Depends(get_db)):
+    job = Job(status="created",
+              audio_file=audio_file)
+    await job.save(db_session)
+    first_task.delay()
+    return job
+
+@router.get("/status", status_code=status.HTTP_200_OK, response_model=JobResponse)
+async def get_job_status(job_id: UUID, db_session: AsyncSession = Depends(get_db)):
+    job = await Job.get(db_session, job_id)
+    return job
 
 
 # @router.get("/", response_model=JobResponse)
@@ -24,6 +34,11 @@ async def create_job(payload: JobSchema, db_session: AsyncSession = Depends(get_
 #     db_session: AsyncSession = Depends(get_db),
 # ):
 #     return await Job.find(db_session, name)
+
+@router.get("/")
+async def get_job(job_id: UUID, db_session: AsyncSession = Depends(get_db)):
+    job = await Job.get(db_session, job_id)
+    return job
 
 
 @router.delete("/")
@@ -43,11 +58,11 @@ async def update_job(
     return job
 
 
-@router.post("/", response_model=JobResponse)
-async def merge_job(
-    payload: JobSchema,
-    db_session: AsyncSession = Depends(get_db),
-):
-    job = Job(**payload.model_dump())
-    await job.save_or_update(db_session)
-    return job
+# @router.post("/", response_model=JobResponse)
+# async def merge_job(
+#     payload: JobSchema,
+#     db_session: AsyncSession = Depends(get_db),
+# ):
+#     job = Job(**payload.model_dump())
+#     await job.save_or_update(db_session)
+#     return job

@@ -5,16 +5,18 @@ from sqlalchemy import String, select, DateTime
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import mapped_column, Mapped
+from fastapi_storages import FileSystemStorage
+from fastapi_storages.integrations.sqlalchemy import FileType
 
 from app.models.base import Base
 
 
 class Job(Base):
     __tablename__ = "job"
-    __table_args__ = ({"schema": "default"},)
-    id: Mapped[uuid:UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, unique=True, default=uuid.uuid4, autoincrement=True)
+    id: Mapped[uuid:UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, unique=True, default=uuid.uuid4)
     status: Mapped[str] = mapped_column(String)
     date_started: Mapped[str | None] = mapped_column(DateTime)
+    audio_file = mapped_column(FileType(storage=FileSystemStorage(path="/tmp")))
 
 
     @classmethod

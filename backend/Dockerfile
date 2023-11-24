@@ -16,8 +16,7 @@ ENV PATH="$POETRY_HOME/bin:$PATH"
 COPY pyproject.toml poetry.lock ./
 
 # install without virtualenv, since we are inside a container
-RUN poetry config virtualenvs.create false \
-    && poetry lock && poetry install $INSTALL_ARGS
+RUN poetry config virtualenvs.create false && poetry install $INSTALL_ARGS
 
 # cleanup
 RUN curl -sSL https://install.python-poetry.org | python3 - --uninstall

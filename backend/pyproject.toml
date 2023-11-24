@@ -26,6 +26,8 @@ redis = "5.0.1"
 passlib = {version = "^1.7.4", extras = ["bcrypt"]}
 sourcery = "^1.11.0"
 celery = {version = "5.3.5", extras = ["redis"]}
+fastapi-storages = {version = "0.2.0", extras = ["full"]}
+python-multipart = "0.0.6"
 
 [tool.poetry.dev-dependencies]
 devtools = { extras = ["pygments"], version = "*" }
