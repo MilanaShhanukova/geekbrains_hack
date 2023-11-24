@@ -33,6 +33,8 @@ for f in os.listdir(test_dir):
         model_llm, tokenizer_llm, device = get_model_and_tokenizer()
         final_keywords = get_key_stage2_llm(keywords_filtered, text, model_llm, tokenizer_llm, device, f)
         final_keywords = [w.capitalize() for w in final_keywords]
+
+
         del model_llm, tokenizer_llm, device
         with open(os.path.join(save_dir_end, f'{f[:-4]}_final_keywords.json'), 'w', encoding='utf-8') as jsf:
             json.dump(final_keywords, jsf, ensure_ascii=False, indent=4)

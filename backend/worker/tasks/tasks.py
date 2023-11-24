@@ -1,5 +1,6 @@
 import asyncio
 import io
+import json
 import logging
 import os
 
@@ -59,14 +60,14 @@ def whisper_task(job_id: str):
     prediction_json = pipe(waveform, batch_size=6)
 
     with DatabaseSessionManager() as db_session:
-        whisper_result = WhisperResult(job_id=job_id, text=prediction_json)
+        whisper_result = WhisperResult(job_id=job_id, text=json.dumps(prediction_json))
         whisper_result.save_sync(db_session)
 
     return prediction_json
 
 
-# @app.task(
-#     # autoretry_for=(Exception,), retry_backoff=True, retry_backoff_max=1800, max_retries=5
-# )
-# def whisper_task(job_id: str):
-#     pass
+@app.task(
+    # autoretry_for=(Exception,), retry_backoff=True, retry_backoff_max=1800, max_retries=5
+)
+def whisper_task(job_id: str):
+    pass

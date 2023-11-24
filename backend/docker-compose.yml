@@ -60,8 +60,8 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              count: all
-              capabilities: [ gpu, utility ]
+              count: 1
+              capabilities: [gpu]
     volumes:
       - ./worker:/opt/app/worker
       - ./app:/opt/app/app
