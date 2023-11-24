@@ -31,7 +31,7 @@ def matching(lecture, timestamps: List[List[int]], texts: List[str], lst: List[s
     for i, text in enumerate(texts):
         for keyword in lst:
             if keyword in text and keyword not in found_keywords:
-                with open('E:/dev/geekbrains_hack/data/textfiles/submit/timecodes.csv', 'a', newline='', encoding='utf-8') as file:
+                with open(directory_path + 'submit/timecodes.csv', 'a', newline='', encoding='utf-8') as file:
 
                     time_list = timestamps[i]
                     formatted_times = [format_seconds_to_minutes_seconds(time) for time in time_list]
