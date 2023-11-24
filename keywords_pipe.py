@@ -62,7 +62,7 @@ def get_keywords(
     nlp_spacy = spacy.load("ru_core_news_sm")  # should be downloaded first?
     raw_text = text
     text = re.sub(r"[^\w\s]", "", text)
-    text = " ".join([w.lemma_ for w in nlp_spacy(text.lower()) if not w.is_stop])
+    text = " ".join([w.text for w in nlp_spacy(text.lower()) if not w.is_stop])
 
     if "llm" in modes:
         print("Start processing LLM keywords")
@@ -135,17 +135,21 @@ def parse_files(files_folder: str, save_dir: str):
             lecture_keywords = list(set([d.strip() for d in lecture_keywords if len(d) > 2]))
             json.dump(lecture_keywords, jsf, ensure_ascii=False, indent=4)
 
-        print(file_name)
-        keywords_filtered, english_words = filter_file(f'data/textfiles/raw/{file_name}', f'data/textfiles/keywords/{file_name}', '')
+        keywords_filtered, english_words = filter_file(f'./data/textfiles/raw/{file_name}',
+                                                    f'./data/textfiles/keywords/{file_name}', '')
 
+ 
         with open(os.path.join(save_dir, f'{file_name[:-5]}_final_keywords.json'), 'w', encoding='utf-8') as jsf:
             model_llm, tokenizer_llm, device = get_model_and_tokenizer()
             final_keywords = get_key_stage2_llm(keywords_filtered, {'text': text}, model_llm, tokenizer_llm, device, file_name)
+            final_keywords = [w.capitalize() for w in final_keywords]
+
             del model_llm, tokenizer_llm, device
             json.dump(final_keywords, jsf, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__":
-    parse_files('data/textfiles/raw/', 'data/textfiles/keywords/')
+    parse_files('./data/textfiles/raw',
+            './data/textfiles/keywords')
 
 
 

@@ -58,8 +58,6 @@ def filter_keywords(keywords: list, text: str, common_words: list):
 def filter_file(lecture_text_path: str, keywords_path: str, save_dir: str):
     with open("./10000-russian-words.txt", encoding='utf-8') as f:
         common_words = f.read().splitlines()
-    #print(common_words)
-    #exit()
 
     lecture_num = lecture_text_path.split('/')[-1][:-5]
     with open(lecture_text_path, encoding='utf-8') as f:
