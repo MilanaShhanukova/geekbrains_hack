@@ -24,7 +24,7 @@ def format_seconds_to_minutes_seconds(time):
     return f"{minutes:02d}:{seconds:02d}"
 
 
-def matching(lecture, timestamps: List[List[int]], texts: List[str], lst: List[str]):
+def matching(lecture, timestamps: List[List[int]], texts: List[str], lst: List[str], directory_path='geekbrains_hack/data/textfiles/'):
     data = []
     found_keywords = set()
 
@@ -32,12 +32,12 @@ def matching(lecture, timestamps: List[List[int]], texts: List[str], lst: List[s
         for keyword in lst:
             if keyword in text and keyword not in found_keywords:
                 with open(directory_path + 'submit/timecodes.csv', 'a', newline='', encoding='utf-8') as file:
-
                     time_list = timestamps[i]
                     formatted_times = [format_seconds_to_minutes_seconds(time) for time in time_list]
                     formatted_range = f"{formatted_times[0]} - {formatted_times[1]}"
 
-                    df = pd.DataFrame([[lecture, keyword, formatted_range]], columns=['File', 'Term', 'Time'])
+                    capitalized_keyword = keyword.capitalize()
+                    df = pd.DataFrame([[lecture, capitalized_keyword, formatted_range]], columns=['File', 'Term', 'Time'])
                     df.to_csv(file, header=not file.tell(), index=False)
                 found_keywords.add(keyword)
                 break
@@ -71,11 +71,10 @@ def get_list(input_files_path, directory_path):
     return lst1 + lst2
  
 
-
 if __name__ == '__main__':
     directory_path = f'E:/dev/geekbrains_hack/data/textfiles/'
     keywords_file_list, raw_file_list = main(directory_path)
     for idx, keywords_file in enumerate(keywords_file_list):
         lst = get_list(keywords_file, directory_path)
         timestamps, texts = get_timestamp_text(raw_file_list[idx], directory_path)
-        matching(raw_file_list[idx], timestamps, texts, lst)
+        matching(raw_file_list[idx], timestamps, texts, lst, directory_path)

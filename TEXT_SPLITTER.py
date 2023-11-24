@@ -12,6 +12,8 @@ from docx import Document
 from docx.shared import RGBColor
 from docx.enum.text import WD_COLOR_INDEX
 from typing import List
+import pymorphy2
+
 
 nltk.download('punkt')
 nltk.download('wordnet')
@@ -71,74 +73,77 @@ def get_paragraphs(input_text):
 
     paragraphs = ''
     for idx, paragraph in enumerate(result, 1):
-        formatted_paragraph = '\t' + paragraph.replace('\n', '\n\t')
-        line = f"\t# Абзац {idx}:\n{formatted_paragraph}\n\n"
+        # line = f"# Абзац {idx}:\n{paragraph}\n\n"
+        line = f"# Абзац\n{paragraph}\n\n"
         paragraphs += line
     return paragraphs
 
 
+def replace_headers(text, keywords):
+    lemmatizer = WordNetLemmatizer()
+    morph = pymorphy2.MorphAnalyzer()
 
+    paragraphs = text.split('\n\n')
+    new_paragraphs = []
 
-# def split_into_paragraphs(text, keywords):
+    for paragraph in paragraphs:
+        words_in_paragraph = word_tokenize(paragraph)
+
+        lemmatized_words = [lemmatizer.lemmatize(word.lower(), pos='n') for word in words_in_paragraph]
+        lemmatized_keywords = [lemmatizer.lemmatize(word.lower(), pos='n') for word in keywords]
+
+        unique_lemmatized = list(set(lemmatized_words))
+        lemmatized_keywords = list(set(lemmatized_keywords))
+
+        matches = [word for word in lemmatized_keywords if word in unique_lemmatized]
+        print(matches)
+
+        words_to_replace = []
+        for word in matches:
+            parsed_word = morph.parse(word)[0]
+            normal_form = parsed_word.normal_form
+            print(word, normal_form)
+            words_to_replace.append(normal_form)
+
+        words_to_replace = [word.capitalize() for word in words_to_replace]
+        words_to_replace = [f'{word} |' for word in words_to_replace]
+
+        words_to_replace = list(set(words_to_replace))
+        words_to_replace = ' '.join(words_to_replace)
+        words_to_replace = '# ' + words_to_replace
+
+        if 'приветствую' in paragraph.lower() or 'привет' in paragraph.lower() or 'всем привет' in paragraph.lower() or 'добрый день' in paragraph.lower() or 'всем привет' in paragraph.lower():
+            replaced_paragraph = paragraph.replace('# Абзац', '# Вступление')
+        
+        elif 'на этом, друзья' in paragraph.lower() or 'всем большое спасибо' in paragraph.lower() or 'до связи' in paragraph.lower() or 'подведем итоги' in paragraph.lower() or 'на сегодня все' in paragraph.lower() or 'до встречи ' in paragraph.lower() or 'счастливо' in paragraph.lower():
+            replaced_paragraph = paragraph.replace('# Абзац', '# Заключение')
+
+        elif words_to_replace and words_to_replace != '# ':
+            replaced_paragraph = paragraph.replace('# Абзац', words_to_replace)
+        else:
+            replaced_paragraph = paragraph
+        
+        new_paragraphs.append(replaced_paragraph)
+
+    return '\n\n'.join(new_paragraphs)
+
+# def replace_headers(text, keywords):
 #     paragraphs = text.split('\n\n')
 #     new_paragraphs = []
 
 #     for paragraph in paragraphs:
-#         sentences = sent_tokenize(paragraph)
-#         current_paragraph = []
+#         words_in_paragraph = set(word_tokenize(paragraph))  # Получаем уникальные слова в параграфе
+#         words_to_replace = [word for word in keywords if word in words_in_paragraph]
         
-#         for sentence in sentences:
-#             words = nltk.word_tokenize(sentence)
-#             contains_keyword = any(word.strip().lower() in keywords for word in words)
+#         if words_to_replace:
+#             combined_words = ' '.join(words_to_replace)
+#             replaced_paragraph = paragraph.replace('# Абзац', combined_words)
+#         else:
+#             replaced_paragraph = paragraph  # Сохраняем исходный параграф без замены
+        
+#         new_paragraphs.append(replaced_paragraph)
 
-#             if contains_keyword:
-#                 if current_paragraph:
-#                     new_paragraphs.append(' '.join(current_paragraph))
-#                     current_paragraph = []
-#             current_paragraph.append(sentence)
-
-#         if current_paragraph:
-#             new_paragraphs.append(' '.join(current_paragraph))
-
-#     return new_paragraphs
-
-
-# def get_paragraphs(input_text):
-#     keywords = {
-#         'немножко подробнее', 'для лучшего понимания', 'друзья, давайте', 'следующий этап', 'следующим пунктом', 'давайте забежим', 'давайте рассмотрим', 'итак', 'работать',
-#         'второй', 'введение', 'глава', 'раздел', 'далее', 'приступим', 'рассмотрим', 'давайте подведем ее итоги', 'давайте подведем итоги',
-#         'подведем итоги', 'ну что , друзья', 'ну что, друзья', 'в заключении'}
-#     result = split_into_paragraphs(input_text, keywords)
-
-#     paragraphs = ''
-#     for idx, paragraph in enumerate(result, 1):
-#         formatted_paragraph = '\t' + paragraph.replace('\n', '\n\t')
-#         line = f"\t# Абзац {idx}:\n{formatted_paragraph}\n\n"
-#         paragraphs += line
-#     return paragraphs
-
-
-# def frame_stars(final_text: str, keyword: List[str]) -> str:
-#     lemmatizer = WordNetLemmatizer()
-#     lines = final_text.split('\n')
-#     marked_words = set()
-#     processed_lines = []
-
-#     for line in lines:
-#         words = word_tokenize(line)
-#         processed_words = []
-
-#         for word in words:
-#             lemma_word = lemmatizer.lemmatize(word.lower())
-#             if lemma_word in keyword and lemma_word not in marked_words:
-#                 processed_words.append(f'*{word}*')
-#                 marked_words.add(lemma_word)
-#             else:
-#                 processed_words.append(word)
-
-#         processed_lines.append(' '.join(processed_words))
-
-#     return '\n'.join(processed_lines)
+#     return '\n\n'.join(new_paragraphs)
 
 
 def frame_stars_without_lemmat(final_text: str, keywords: List[str]) -> str:
@@ -173,11 +178,9 @@ def main(directory_path):
         
         with open(keywords_file_path_fil, 'r', encoding='utf-8') as file:
             keywords_2 = json.load(file)
-        
-        
-        # final_text = frame_stars(final_text, keywords_1 + keywords_2)
-        final_text = frame_stars_without_lemmat(final_text, keywords_1 + keywords_2)
 
+        final_text = frame_stars_without_lemmat(final_text, keywords_1 + keywords_2)
+        final_text = replace_headers(final_text, keywords_1 + keywords_2)
 
         doc = Document()
         doc.add_paragraph(final_text)
@@ -186,52 +189,6 @@ def main(directory_path):
             os.remove(output_docx_path)
 
         doc.save(output_docx_path)
-
-        # highlighting
-        # doc = Document(output_docx_path)
-
-        # for keyword in keywords:
-        #     doc = split_Runs(doc, keyword)
-        # for keyword in keywords:
-        #     doc = style_Token(doc, keyword)
-    
-        # if os.path.exists(output_docx_path):
-        #     os.remove(output_docx_path)
-
-        # doc.save(output_docx_path)
-
-
-
-# def split_text(text, word):
-#     pattern = re.compile(r'([\S\s]*)(\b{})([\S\s]*)'.format(word))
-#     match = pattern.search(text)
-#     if match:
-#         return match.groups()
-#     return ('', '', '')
-
-
-# def split_Runs(doc,word):
-#     for p in doc.paragraphs:
-#         if p.text.find(word) != -1:
-#             virtualRuns=p.runs
-#             p.text = ""
-#             for r in virtualRuns:
-#                 if r.text.find(word) != -1:
-#                     before, word, after = split_text(r.text, word)
-#                     p.add_run(before)
-#                     p.add_run()
-#                     p.add_run(word)
-#                     p.add_run(after)
-#                 else:
-#                     p.add_run(r.text)
-#     return doc
-
-# def style_Token(doc,word):
-#     for p in doc.paragraphs:
-#         for i,r in enumerate(p.runs):
-#             if p.runs[i].text.find(word) != -1:
-#                 p.runs[i].font.highlight_color = WD_COLOR_INDEX.YELLOW
-#     return doc
 
 
 if __name__ == '__main__':

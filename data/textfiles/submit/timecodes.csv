@@ -1,237 +1,305 @@
 File,Term,Time
-lecture_1.json,арифметические операторы,00:20 - 00:29
-lecture_1.json,массивы,00:30 - 00:35
-lecture_1.json,задачи,00:58 - 01:03
-lecture_1.json,обращение к элементам,02:14 - 02:18
-lecture_1.json,индексация,02:25 - 02:30
-lecture_1.json,элементы,02:45 - 02:51
-lecture_1.json,создание массива,03:18 - 03:27
-lecture_1.json,average,04:07 - 04:19
-lecture_1.json,элементы массива,07:39 - 07:43
-lecture_1.json,язык программирования,11:46 - 11:55
-lecture_1.json,git,12:26 - 12:30
-lecture_1.json,репозиторий,13:19 - 13:22
-lecture_1.json,среднее значение,14:31 - 14:37
-lecture_1.json,тестировщик программного обеспечения,15:52 - 15:58
-lecture_1.json,блок-схемы,17:33 - 17:40
-lecture_1.json,блок-схема,19:21 - 19:24
-lecture_1.json,while,20:27 - 20:32
-lecture_1.json,элемент массив,20:35 - 20:39
-lecture_1.json,переменные,24:34 - 24:38
-lecture_1.json,алгоритмическое мышление,25:26 - 25:29
-lecture_1.json,алгоритмы,25:33 - 25:36
-lecture_1.json,условия,25:51 - 25:53
-lecture_1.json,деление по модулю,28:47 - 28:54
-lecture_1.json,форматирование кода,30:41 - 30:43
-lecture_1.json,цикл while,31:04 - 31:05
-lecture_1.json,итерации,31:11 - 31:13
-lecture_1.json,гири,33:51 - 33:55
-lecture_1.json,операторы сравнения,42:47 - 42:48
-lecture_1.json,цикл for,44:12 - 44:20
-lecture_1.json,true,46:46 - 46:53
-lecture_1.json,циклы,50:00 - 50:06
-lecture_1.json,максимальное значение,50:11 - 50:16
-lecture_1.json,сообщения об ошибках,54:06 - 54:12
-lecture_1.json,именование объектов,54:19 - 54:29
-lecture_1.json,чтение файла,54:53 - 54:59
-lecture_1.json,основные характеристики,59:39 - 59:47
-lecture_1.json,вывод на экран,59:47 - 59:54
-lecture_2.json,отладка программ,02:06 - 02:09
-lecture_2.json,рекурсия,02:17 - 02:22
-lecture_2.json,алгоритмы,02:27 - 02:32
-lecture_2.json,друзья,04:31 - 04:37
-lecture_2.json,функции,06:17 - 06:25
-lecture_2.json,матрешки,06:42 - 06:45
-lecture_2.json,ошибки,07:21 - 07:26
-lecture_2.json,рекурсивный вызов,07:33 - 07:39
-lecture_2.json,базовый случай,08:13 - 08:20
-lecture_2.json,рекурсивный,09:28 - 09:33
-lecture_2.json,рекурсивные вызовы,11:00 - 11:06
-lecture_2.json,раскручивание рекурсии,21:08 - 21:10
-lecture_2.json,последовательность действий,23:06 - 23:08
-lecture_2.json,рекурсивные алгоритмы,25:32 - 25:40
-lecture_2.json,факториал,26:04 - 26:11
-lecture_2.json,условия остановки рекурсии,29:14 - 29:16
-lecture_2.json,стек,36:17 - 36:25
-lecture_2.json,интерпретатор,37:40 - 37:44
-lecture_2.json,компилятор,37:49 - 37:55
-lecture_2.json,отладка,38:47 - 38:51
-lecture_2.json,баги,39:11 - 39:15
-lecture_2.json,вывод информации,39:38 - 39:42
-lecture_2.json,отладчик,44:35 - 44:40
-lecture_2.json,точки останова,51:42 - 51:46
-lecture_2.json,keep it simple,55:22 - 55:25
-lecture_2.json,do not repeat yourself,57:16 - 57:23
-lecture_2.json,stupid,58:41 - 58:46
-lecture_2.json,переменные,61:42 - 61:47
-lecture_2.json,избыточная функциональность,62:09 - 62:13
-lecture_2.json,собеседование джуниор-программиста,63:34 - 63:39
-lecture_2.json,синтезированный пример,67:28 - 67:36
-lecture_3.json,решения,02:07 - 02:10
-lecture_3.json,препроцессор,04:33 - 04:35
-lecture_3.json,препроцессоры,04:36 - 04:39
-lecture_3.json,новшества,05:12 - 05:15
-lecture_3.json,гамбургер-меню,05:30 - 05:31
-lecture_3.json,адаптив,05:43 - 05:46
-lecture_3.json,адаптивность,06:27 - 06:29
-lecture_3.json,замедление переходов,06:38 - 06:39
-lecture_3.json,расширения,08:17 - 08:20
-lecture_3.json,итоги,09:28 - 09:32
-lecture_3.json,переменные,12:03 - 12:05
-lecture_3.json,вложенность,12:55 - 12:57
-lecture_3.json,функции,12:57 - 12:59
-lecture_3.json,циклы,13:03 - 13:06
-lecture_3.json,css,14:48 - 14:55
-lecture_3.json,sas,14:56 - 14:58
-lecture_3.json,style,17:23 - 17:26
-lecture_3.json,scss,20:04 - 20:05
-lecture_3.json,sass,26:03 - 26:04
-lecture_3.json,color,30:52 - 30:56
-lecture_3.json,breadcrumbs,33:24 - 33:27
-lecture_3.json,link,34:41 - 34:42
-lecture_3.json,breadcrumb link,36:03 - 36:07
-lecture_3.json,обязательно добавлять,37:47 - 37:50
-lecture_3.json,width,38:21 - 38:23
-lecture_3.json,header,38:26 - 38:31
-lecture_3.json,padding,40:15 - 40:16
+lecture_1.json,Массива,00:09 - 00:14
+lecture_1.json,Арифметические операторы,00:20 - 00:29
+lecture_1.json,Массивы,00:30 - 00:35
+lecture_1.json,Друзья,00:46 - 00:52
+lecture_1.json,Задачи,00:58 - 01:03
+lecture_1.json,Элементов,01:11 - 01:16
+lecture_1.json,Чисел,01:16 - 01:22
+lecture_1.json,Элемента,01:31 - 01:37
+lecture_1.json,Программирования индекс,01:58 - 02:05
+lecture_1.json,Помощью,02:14 - 02:18
+lecture_1.json,Индексация,02:25 - 02:30
+lecture_1.json,Массиве,02:45 - 02:51
+lecture_1.json,Случае,02:51 - 02:59
+lecture_1.json,Создание массива,03:18 - 03:27
+lecture_1.json,Average,04:07 - 04:19
+lecture_1.json,Элементы,06:37 - 06:48
+lecture_1.json,Элементы массива,07:39 - 07:43
+lecture_1.json,Язык программирования,11:46 - 11:55
+lecture_1.json,Git,12:26 - 12:30
+lecture_1.json,Указанием комментария,12:44 - 12:44
+lecture_1.json,Репозиторий,13:19 - 13:22
+lecture_1.json,Программирования,13:26 - 13:33
+lecture_1.json,Среднее значение,14:31 - 14:37
+lecture_1.json,Тестировщик программного обеспечения,15:52 - 15:58
+lecture_1.json,Блок-схемы,17:33 - 17:40
+lecture_1.json,Цикла,18:07 - 18:14
+lecture_1.json,Блок-схема,19:21 - 19:24
+lecture_1.json,While,20:27 - 20:32
+lecture_1.json,Переменной,23:31 - 23:42
+lecture_1.json,Переменные,24:34 - 24:38
+lecture_1.json,Алгоритмическое мышление,25:26 - 25:29
+lecture_1.json,Алгоритмы,25:33 - 25:36
+lecture_1.json,Условия,25:51 - 25:53
+lecture_1.json,Выделить проход,26:30 - 26:34
+lecture_1.json,Деление по модулю,28:47 - 28:54
+lecture_1.json,Форматирование кода,30:41 - 30:43
+lecture_1.json,Цикл while,31:04 - 31:05
+lecture_1.json,Итерации,31:11 - 31:13
+lecture_1.json,Гири,33:51 - 33:55
+lecture_1.json,Алгоритм поиска,36:34 - 36:41
+lecture_1.json,Значение максимума,39:15 - 39:26
+lecture_1.json,Операторы сравнения,42:47 - 42:48
+lecture_1.json,Цикл for,44:12 - 44:20
+lecture_1.json,True,46:46 - 46:53
+lecture_1.json,Циклы,50:00 - 50:06
+lecture_1.json,Максимальное значение,50:11 - 50:16
+lecture_1.json,Технический английский,53:48 - 53:50
+lecture_1.json,Сообщения об ошибках,54:06 - 54:12
+lecture_1.json,Именование объектов,54:19 - 54:29
+lecture_1.json,Чтение файла,54:53 - 54:59
+lecture_1.json,Основные характеристики,59:39 - 59:47
+lecture_1.json,Вывод на экран,59:47 - 59:54
+lecture_2.json,Рекурсии,01:46 - 01:51
+lecture_2.json,Рассмотрим,01:51 - 01:59
+lecture_2.json,Отладка программ,02:06 - 02:09
+lecture_2.json,Рекурсия,02:17 - 02:22
+lecture_2.json,Алгоритмы,02:27 - 02:32
+lecture_2.json,Друзья,04:31 - 04:37
+lecture_2.json,Функции,06:17 - 06:25
+lecture_2.json,Кода,06:42 - 06:45
+lecture_2.json,Работы,07:06 - 07:10
+lecture_2.json,Ошибки,07:21 - 07:26
+lecture_2.json,Рекурсивный,07:33 - 07:39
+lecture_2.json,Вызова,07:39 - 07:46
+lecture_2.json,Вызовов,07:46 - 07:53
+lecture_2.json,Базовый случай,08:13 - 08:20
+lecture_2.json,Параметра,08:33 - 08:40
+lecture_2.json,Матрешки,08:46 - 08:50
+lecture_2.json,Видим,09:28 - 09:33
+lecture_2.json,Рекурсивные вызовы,11:00 - 11:06
+lecture_2.json,Раскручивание рекурсии,21:08 - 21:10
+lecture_2.json,Последовательность действий,23:06 - 23:08
+lecture_2.json,Рекурсивные алгоритмы,25:32 - 25:40
+lecture_2.json,Факториал,26:04 - 26:11
+lecture_2.json,Условия остановки рекурсии,29:14 - 29:16
+lecture_2.json,Стек,36:17 - 36:25
+lecture_2.json,Переменной result,36:33 - 36:41
+lecture_2.json,Интерпретатор,37:40 - 37:44
+lecture_2.json,Компилятор,37:49 - 37:55
+lecture_2.json,Отладка,38:47 - 38:51
+lecture_2.json,Баги,39:11 - 39:15
+lecture_2.json,Вывод информации,39:38 - 39:42
+lecture_2.json,Отладчик,44:35 - 44:40
+lecture_2.json,Запустилась функция,47:53 - 48:00
+lecture_2.json,Функции факт,49:35 - 49:44
+lecture_2.json,Точки останова,51:42 - 51:46
+lecture_2.json,Keep it simple,55:22 - 55:25
+lecture_2.json,Do not repeat yourself,57:16 - 57:23
+lecture_2.json,Stupid,58:41 - 58:46
+lecture_2.json,Сохранен соответствующими,60:06 - 60:11
+lecture_2.json,Переменные,61:42 - 61:47
+lecture_2.json,Избыточная функциональность,62:09 - 62:13
+lecture_2.json,Собеседование джуниор-программиста,63:34 - 63:39
+lecture_2.json,Синтезированный пример,67:28 - 67:36
+lecture_2.json,Программирования завершается,70:34 - 70:37
+lecture_3.json,Решения,02:07 - 02:10
+lecture_3.json,Знаю,02:21 - 02:25
+lecture_3.json,Знаете,03:44 - 03:47
+lecture_3.json,Препроцессор,04:33 - 04:35
+lecture_3.json,Препроцессоры,04:36 - 04:39
+lecture_3.json,Новшества,05:12 - 05:15
+lecture_3.json,Гамбургер-меню,05:30 - 05:31
+lecture_3.json,Адаптив,05:43 - 05:46
+lecture_3.json,Адаптивность,06:27 - 06:29
+lecture_3.json,Замедление переходов,06:38 - 06:39
+lecture_3.json,Пишу,07:10 - 07:12
+lecture_3.json,Ситуации,07:34 - 07:36
+lecture_3.json,Расширения,08:17 - 08:20
+lecture_3.json,Итоги,09:28 - 09:32
+lecture_3.json,Переменные,12:03 - 12:05
+lecture_3.json,Рекомендую,12:40 - 12:43
+lecture_3.json,Вложенность,12:55 - 12:57
+lecture_3.json,Функции,12:57 - 12:59
+lecture_3.json,Циклы,13:03 - 13:06
+lecture_3.json,Css,14:48 - 14:55
+lecture_3.json,Sas,14:56 - 14:58
+lecture_3.json,Вижу,15:13 - 15:21
+lecture_3.json,Сайта,16:36 - 16:41
+lecture_3.json,Style,17:23 - 17:26
+lecture_3.json,Scss,20:04 - 20:05
+lecture_3.json,Смотрите,23:50 - 23:53
+lecture_3.json,Sass,26:03 - 26:04
+lecture_3.json,Выцепляю цвет,29:21 - 29:26
+lecture_3.json,Color,30:52 - 30:56
+lecture_3.json,Breadcrumbs,33:24 - 33:27
+lecture_3.json,Link,34:41 - 34:42
+lecture_3.json,Breadcrumb link,36:03 - 36:07
+lecture_3.json,Обязательно добавлять,37:47 - 37:50
+lecture_3.json,Width,38:21 - 38:23
+lecture_3.json,Header,38:26 - 38:31
+lecture_3.json,Padding,40:15 - 40:16
 lecture_3.json,570 1140,41:35 - 41:45
-lecture_3.json,ввожу fonts,42:32 - 42:39
-lecture_3.json,background color,47:03 - 47:07
-lecture_3.json,description,53:38 - 53:51
-lecture_3.json,name,59:17 - 59:19
-lecture_3.json,product,59:23 - 59:25
-lecture_3.json,content,59:42 - 59:45
-lecture_3.json,flex direction,63:14 - 63:23
-lecture_3.json,display flex,63:23 - 63:25
-lecture_3.json,импорты,64:44 - 64:48
-lecture_3.json,mixins,69:15 - 69:18
-lecture_3.json,минималистичная,75:22 - 75:25
-lecture_4.json,целевая аудитория,02:35 - 02:39
-lecture_4.json,классический маркетинг,03:47 - 03:50
-lecture_4.json,партизанский маркетинг,03:51 - 03:52
-lecture_4.json,специалисты,04:28 - 04:33
-lecture_4.json,каналы продаж,06:06 - 06:10
-lecture_4.json,цена продукта,06:14 - 06:18
-lecture_4.json,вариативность,06:18 - 06:22
-lecture_4.json,стратегии,06:25 - 06:28
-lecture_4.json,экономические факторы,08:20 - 08:22
-lecture_4.json,гнозировать,08:23 - 08:45
-lecture_4.json,преимущества,09:53 - 09:59
-lecture_4.json,услуги,10:44 - 10:48
-lecture_4.json,дистрибуция,11:11 - 11:17
-lecture_4.json,аналитика,11:17 - 11:24
-lecture_4.json,физический продукт,12:01 - 12:08
-lecture_4.json,плюсы,13:37 - 13:41
-lecture_4.json,субъективные факторы,15:23 - 15:26
-lecture_4.json,стимулирование спроса,16:14 - 16:18
-lecture_4.json,онлайн,16:39 - 16:48
-lecture_4.json,цифровые каналы,16:48 - 16:55
-lecture_4.json,диджитал-маркетинг,16:59 - 17:02
-lecture_4.json,минусы,19:10 - 19:15
-lecture_4.json,диапазон возможностей разработки,20:40 - 20:44
-lecture_4.json,потребности,21:45 - 21:49
-lecture_4.json,оценка метрик,23:37 - 23:39
-lecture_4.json,мобильное приложение,23:45 - 23:54
-lecture_4.json,социальные сети,23:57 - 24:04
-lecture_4.json,истории пользователей,24:04 - 24:09
-lecture_4.json,путеводители,24:14 - 24:17
-lecture_4.json,мотивы,25:26 - 25:29
-lecture_4.json,вирусный,25:43 - 25:46
-lecture_4.json,инновации,25:46 - 25:53
-lecture_4.json,фотографии,27:44 - 27:50
-lecture_4.json,креатив,29:18 - 29:21
-lecture_4.json,эффект вспышки,29:55 - 30:07
-lecture_4.json,люди,30:17 - 30:19
-lecture_4.json,охват,30:29 - 30:32
-lecture_4.json,диджитал-подходы,30:45 - 30:48
-lecture_4.json,психология клиента,30:54 - 31:00
-lecture_4.json,рынок в целом,31:17 - 31:19
-lecture_4.json,тонкие настройки продукта,31:50 - 31:52
-lecture_4.json,качество разработки продукта,31:58 - 32:02
-lecture_4.json,медали,32:44 - 32:51
-lecture_4.json,потребители,34:00 - 34:08
-lecture_4.json,микромаршруты,36:41 - 36:44
-lecture_4.json,маркетолог,38:57 - 39:08
-lecture_4.json,параметры эффективности,40:32 - 40:35
-lecture_4.json,показатели,40:46 - 40:53
-lecture_4.json,жизненная ценность клиента,41:28 - 41:35
-lecture_4.json,индекс лояльности клиента,41:35 - 41:43
-lecture_4.json,возражения,43:24 - 43:33
-lecture_4.json,случаи,45:15 - 45:23
-lecture_4.json,взаимосвязь бизнеса,47:51 - 47:54
-lecture_4.json,маркетологи,53:53 - 54:01
-lecture_4.json,продакт-менеджеры,55:11 - 55:13
-lecture_4.json,уникальное товарное предложение,56:39 - 56:49
-lecture_4.json,channel fit,57:02 - 57:05
-lecture_4.json,продакт-маркетинг,58:59 - 59:02
-lecture_4.json,диджитал-продвижение,59:39 - 59:42
-lecture_4.json,знание потребителя,59:46 - 59:48
-lecture_4.json,возможности рынка,59:53 - 59:56
-lecture_4.json,прибыль компании,60:01 - 60:03
-lecture_5.json,задачи,01:42 - 01:49
-lecture_5.json,языки программирования,02:25 - 02:31
-lecture_5.json,алгоритмы,02:31 - 02:37
-lecture_5.json,правила,03:22 - 03:26
-lecture_5.json,язык программирования,04:25 - 04:30
-lecture_5.json,переменные,04:34 - 04:41
-lecture_5.json,переменной,04:47 - 04:53
-lecture_5.json,main,06:06 - 06:13
-lecture_5.json,классы,06:19 - 06:24
-lecture_5.json,программное обеспечение,08:37 - 08:42
-lecture_5.json,команды,10:43 - 10:46
-lecture_5.json,change directory,10:53 - 11:07
-lecture_5.json,консоль,11:48 - 11:53
-lecture_5.json,правильной работе,12:53 - 12:58
-lecture_5.json,наработки,12:59 - 13:02
-lecture_5.json,git,13:05 - 13:08
-lecture_5.json,gitignore,13:58 - 14:03
-lecture_5.json,репозиторий,14:03 - 14:07
-lecture_5.json,арифметика,14:29 - 14:32
-lecture_5.json,значения,14:51 - 14:57
-lecture_5.json,вещественные числа,15:11 - 15:17
-lecture_5.json,операции,15:22 - 15:26
-lecture_5.json,сложение,15:26 - 15:32
-lecture_5.json,линейный алгоритм,15:38 - 15:48
-lecture_5.json,условия,16:00 - 16:01
-lecture_5.json,переменную,16:37 - 16:43
-lecture_5.json,инициализация,17:26 - 17:33
-lecture_5.json,имя переменной,18:28 - 18:34
-lecture_5.json,hello world,18:51 - 18:57
-lecture_5.json,типы данных,19:43 - 19:49
-lecture_5.json,long,19:57 - 20:00
-lecture_5.json,int,20:00 - 20:07
-lecture_5.json,double,20:23 - 20:27
-lecture_5.json,логический тип данных,20:45 - 20:50
-lecture_5.json,true,20:50 - 20:57
-lecture_5.json,командой,22:46 - 23:05
-lecture_5.json,арифметические операции,23:45 - 23:50
-lecture_5.json,наиболее вместительный тип,28:42 - 28:45
-lecture_5.json,целые числа,29:12 - 29:13
-lecture_5.json,плюс i1,30:14 - 30:29
-lecture_5.json,целочисленные переменные,31:00 - 31:05
-lecture_5.json,сохраним,32:28 - 32:49
-lecture_5.json,дробь,38:08 - 38:12
-lecture_5.json,блок-схема,39:50 - 39:54
-lecture_5.json,переменной b,40:06 - 40:14
-lecture_5.json,yes,40:14 - 40:21
-lecture_5.json,ветка no,40:21 - 40:26
-lecture_5.json,сравнения,41:17 - 41:31
-lecture_5.json,переменные a,41:49 - 41:55
-lecture_5.json,оператор if,42:01 - 42:07
-lecture_5.json,else,43:06 - 43:12
-lecture_5.json,входных переменных,44:08 - 44:09
-lecture_5.json,task3,44:46 - 44:57
-lecture_5.json,master,45:28 - 45:35
-lecture_5.json,максимального,45:56 - 46:02
-lecture_5.json,наибольшее значение,46:32 - 46:37
-lecture_5.json,присваивание,48:16 - 48:29
-lecture_5.json,инициализируется,48:29 - 48:36
-lecture_5.json,циклы,51:41 - 51:43
-lecture_5.json,повторяемое действие,53:41 - 53:44
-lecture_5.json,вспомогательные переменные,53:46 - 53:51
-lecture_5.json,условие цикла,53:51 - 53:58
-lecture_5.json,вывод на экран,57:17 - 57:22
-lecture_5.json,while,58:46 - 58:51
-lecture_5.json,пробелы,60:16 - 60:21
-lecture_5.json,одной,62:22 - 62:25
-lecture_5.json,статическая типизация,63:58 - 64:01
+lecture_3.json,Background color,47:03 - 47:07
+lecture_3.json,Flex,48:16 - 48:31
+lecture_3.json,Description,53:38 - 53:51
+lecture_3.json,Name,59:17 - 59:19
+lecture_3.json,Product,59:23 - 59:25
+lecture_3.json,Content,59:42 - 59:45
+lecture_3.json,Flex direction,63:14 - 63:23
+lecture_3.json,Display flex,63:23 - 63:25
+lecture_3.json,Импорты,64:44 - 64:48
+lecture_3.json,Mixins,69:15 - 69:18
+lecture_3.json,Минималистичная,75:22 - 75:25
+lecture_4.json,Маркетинга,00:00 - 01:31
+lecture_4.json,Продукта,02:26 - 02:30
+lecture_4.json,Целевая аудитория,02:35 - 02:39
+lecture_4.json,Потребителя,02:39 - 02:44
+lecture_4.json,Рынке,02:52 - 02:56
+lecture_4.json,Продаж,02:58 - 03:02
+lecture_4.json,Рамках,03:25 - 03:32
+lecture_4.json,Классический маркетинг,03:47 - 03:50
+lecture_4.json,Партизанский маркетинг,03:51 - 03:52
+lecture_4.json,Рынка,04:24 - 04:28
+lecture_4.json,Специалисты,04:28 - 04:33
+lecture_4.json,Компании,04:34 - 04:38
+lecture_4.json,Каналы продаж,06:06 - 06:10
+lecture_4.json,Цена продукта,06:14 - 06:18
+lecture_4.json,Вариативность,06:18 - 06:22
+lecture_4.json,Стратегии,06:25 - 06:28
+lecture_4.json,Экономические факторы,08:20 - 08:22
+lecture_4.json,Гнозировать,08:23 - 08:45
+lecture_4.json,Моменты влияния,09:47 - 09:52
+lecture_4.json,Преимущества,09:53 - 09:59
+lecture_4.json,Исследования,10:00 - 10:03
+lecture_4.json,Цифровой продукт,10:44 - 10:48
+lecture_4.json,Дистрибуция,11:11 - 11:17
+lecture_4.json,Аналитика,11:17 - 11:24
+lecture_4.json,Физический продукт,12:01 - 12:08
+lecture_4.json,Плюсы,13:37 - 13:41
+lecture_4.json,Услуги,14:52 - 14:57
+lecture_4.json,Клиента,15:14 - 15:16
+lecture_4.json,Субъективные факторы,15:23 - 15:26
+lecture_4.json,Стимулирование спроса,16:14 - 16:18
+lecture_4.json,Распространяется цифровыми,16:27 - 16:32
+lecture_4.json,Онлайн,16:39 - 16:48
+lecture_4.json,Цифровые каналы,16:48 - 16:55
+lecture_4.json,Диджитал-маркетинг,16:59 - 17:02
+lecture_4.json,Минусы,19:10 - 19:15
+lecture_4.json,Диапазон возможностей разработки,20:40 - 20:44
+lecture_4.json,Потребности,21:45 - 21:49
+lecture_4.json,Оценка метрик,23:37 - 23:39
+lecture_4.json,Мобильное приложение,23:45 - 23:54
+lecture_4.json,Социальные сети,23:57 - 24:04
+lecture_4.json,Истории пользователей,24:04 - 24:09
+lecture_4.json,Путеводители,24:14 - 24:17
+lecture_4.json,Мотивы,25:26 - 25:29
+lecture_4.json,Вирусный,25:43 - 25:46
+lecture_4.json,Инновации,25:46 - 25:53
+lecture_4.json,Фотографии,27:44 - 27:50
+lecture_4.json,Креатив,29:18 - 29:21
+lecture_4.json,Широкого распространения,29:41 - 29:47
+lecture_4.json,Эффект вспышки,29:55 - 30:07
+lecture_4.json,Люди,30:17 - 30:19
+lecture_4.json,Охват,30:29 - 30:32
+lecture_4.json,Диджитал-подходы,30:45 - 30:48
+lecture_4.json,Психология клиента,30:54 - 31:00
+lecture_4.json,Рынок в целом,31:17 - 31:19
+lecture_4.json,Тонкие настройки продукта,31:50 - 31:52
+lecture_4.json,Качество разработки продукта,31:58 - 32:02
+lecture_4.json,Медали,32:44 - 32:51
+lecture_4.json,Потребители,34:00 - 34:08
+lecture_4.json,Микромаршруты,36:41 - 36:44
+lecture_4.json,Маркетолог,38:57 - 39:08
+lecture_4.json,Параметры эффективности,40:32 - 40:35
+lecture_4.json,Показатели,40:46 - 40:53
+lecture_4.json,Жизненная ценность клиента,41:28 - 41:35
+lecture_4.json,Индекс лояльности клиента,41:35 - 41:43
+lecture_4.json,Возражения,43:24 - 43:33
+lecture_4.json,Случаи,45:15 - 45:23
+lecture_4.json,Увеличение объема,46:10 - 46:13
+lecture_4.json,Докризисного объема,46:59 - 47:01
+lecture_4.json,Взаимосвязь бизнеса,47:51 - 47:54
+lecture_4.json,Продакт-менеджеры,53:53 - 54:01
+lecture_4.json,Маркетологи,54:01 - 54:05
+lecture_4.json,Уникальное товарное предложение,56:39 - 56:49
+lecture_4.json,Channel fit,57:02 - 57:05
+lecture_4.json,Продакт-маркетинг,58:59 - 59:02
+lecture_4.json,Диджитал-продвижение,59:39 - 59:42
+lecture_4.json,Знание потребителя,59:46 - 59:48
+lecture_4.json,Возможности рынка,59:53 - 59:56
+lecture_4.json,Прибыль компании,60:01 - 60:03
+lecture_4.json,Текущих экономических,60:18 - 60:26
+lecture_5.json,Друзья,00:00 - 01:39
+lecture_5.json,Программирования,01:42 - 01:49
+lecture_5.json,Кода,01:56 - 02:05
+lecture_5.json,Языки программирования,02:25 - 02:31
+lecture_5.json,Алгоритмы,02:31 - 02:37
+lecture_5.json,Задачи,03:02 - 03:10
+lecture_5.json,Правила,03:22 - 03:26
+lecture_5.json,Экране,04:04 - 04:05
+lecture_5.json,Языке,04:15 - 04:15
+lecture_5.json,Язык программирования,04:25 - 04:30
+lecture_5.json,Переменные,04:34 - 04:41
+lecture_5.json,Переменной,04:47 - 04:53
+lecture_5.json,Переменных,05:17 - 05:23
+lecture_5.json,Main,06:06 - 06:13
+lecture_5.json,Классы,06:19 - 06:24
+lecture_5.json,Случае,08:32 - 08:37
+lecture_5.json,Программное обеспечение,08:37 - 08:42
+lecture_5.json,Перейдем,09:29 - 09:34
+lecture_5.json,Создадим,10:37 - 10:40
+lecture_5.json,Команды,10:43 - 10:46
+lecture_5.json,Make directory,10:46 - 10:53
+lecture_5.json,Командой,10:53 - 11:07
+lecture_5.json,Консоль,11:48 - 11:53
+lecture_5.json,Правильной работе,12:53 - 12:58
+lecture_5.json,Наработки,12:59 - 13:02
+lecture_5.json,Git,13:05 - 13:08
+lecture_5.json,Gitignore,13:58 - 14:03
+lecture_5.json,Репозиторий,14:03 - 14:07
+lecture_5.json,Арифметика,14:29 - 14:32
+lecture_5.json,Значения,14:51 - 14:57
+lecture_5.json,Вещественные числа,15:11 - 15:17
+lecture_5.json,Операции,15:22 - 15:26
+lecture_5.json,Сложение,15:26 - 15:32
+lecture_5.json,Линейный алгоритм,15:38 - 15:48
+lecture_5.json,Условия,16:00 - 16:01
+lecture_5.json,Переменную,16:37 - 16:43
+lecture_5.json,Инициализация,17:26 - 17:33
+lecture_5.json,Имя переменной,18:28 - 18:34
+lecture_5.json,Hello world,18:51 - 18:57
+lecture_5.json,Типы данных,19:43 - 19:49
+lecture_5.json,Long,19:57 - 20:00
+lecture_5.json,Int,20:00 - 20:07
+lecture_5.json,Double,20:23 - 20:27
+lecture_5.json,Логический тип данных,20:45 - 20:50
+lecture_5.json,True,20:50 - 20:57
+lecture_5.json,Арифметические операции,23:45 - 23:50
+lecture_5.json,Наиболее вместительный тип,28:42 - 28:45
+lecture_5.json,Целые числа,29:12 - 29:13
+lecture_5.json,Двух double,30:45 - 30:54
+lecture_5.json,Целочисленные переменные,31:00 - 31:05
+lecture_5.json,Product3,32:09 - 32:16
+lecture_5.json,Сохраним,32:28 - 32:49
+lecture_5.json,Создадим соответствующий,33:01 - 33:30
+lecture_5.json,Дробь,38:08 - 38:12
+lecture_5.json,Блок-схема,39:50 - 39:54
+lecture_5.json,Переменной b,40:06 - 40:14
+lecture_5.json,Yes,40:14 - 40:21
+lecture_5.json,Вывод на экран,40:21 - 40:26
+lecture_5.json,Оператор if,41:17 - 41:31
+lecture_5.json,Переменные a,41:49 - 41:55
+lecture_5.json,Сравнения,41:55 - 42:01
+lecture_5.json,Else,43:06 - 43:12
+lecture_5.json,Входных переменных,44:08 - 44:09
+lecture_5.json,Работы запустим,44:28 - 44:39
+lecture_5.json,Task3,44:46 - 44:57
+lecture_5.json,Master,45:28 - 45:35
+lecture_5.json,Максимального,45:56 - 46:02
+lecture_5.json,5 весов гирь,46:32 - 46:37
+lecture_5.json,Символ присваивания,47:40 - 47:50
+lecture_5.json,Присваивание,48:16 - 48:29
+lecture_5.json,Инициализируется,48:29 - 48:36
+lecture_5.json,Значения true,48:55 - 48:59
+lecture_5.json,Циклы,51:41 - 51:43
+lecture_5.json,Повторяемое действие,53:41 - 53:44
+lecture_5.json,Вспомогательные переменные,53:46 - 53:51
+lecture_5.json,Условие цикла,53:51 - 53:58
+lecture_5.json,While,58:46 - 58:51
+lecture_5.json,Пробелы,60:16 - 60:21
+lecture_5.json,Видим вывод,62:08 - 62:16
+lecture_5.json,Одной,62:22 - 62:25
+lecture_5.json,Объем кода,62:38 - 62:40
+lecture_5.json,Статическая типизация,63:58 - 64:01
