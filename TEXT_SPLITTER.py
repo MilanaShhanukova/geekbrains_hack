@@ -76,22 +76,29 @@ def get_paragraphs(input_text):
     return paragraphs
 
 
-# def replace_with_hashtag(final_text: str, keyword: List[str]):
-#     lemmatizer = WordNetLemmatizer()
-#     lines = final_text.split('\n')
-#     marked_words = set()
-#     processed_lines = []
+def highlight_text_with_stars(doc):
+    for paragraph in doc.paragraphs:
+        for run in paragraph.runs:
+            text = run.text
+            highlighted_text = ''
+            i = 0
+            while i < len(text):
+                if text[i:i+1] == '*':
+                    start = i
+                    i += 1
+                    while i < len(text) and text[i:i+1] != '*':
+                        i += 1
+                    end = i + 1
+                    highlighted_text += text[start:end]
+                else:
+                    highlighted_text += text[i]
+                    i += 1
 
-#     for line in lines:
-#         words = word_tokenize(line)
-#         processed_words = []
-
-#         for word in words:
-#             lemma_word = lemmatizer.lemmatize(word.lower())
-#             if lemma_word in keyword and lemma_word not in marked_words:
-#                 marked_words.add(lemma_word)
-#             print(marked_words)
-#         processed_lines.append(' '.join(processed_words))
+            if highlighted_text != '':
+                new_run = run.clear()
+                new_run.add_text(highlighted_text.replace('*', '').strip('*'))
+                if '*' in highlighted_text:
+                    new_run.font.color.rgb = RGBColor(255, 255, 0)
 
 
 def frame_stars(final_text: str, keyword: List[str]) -> str:
@@ -136,14 +143,14 @@ def main(directory_path):
             keywords = json.load(file)
         
         final_text = frame_stars(final_text, keywords)
-        # paragraphs = blankline_tokenize(final_text)
-        # final_text = replace_with_hashtag(final_text, words_to_replace)
 
         doc = Document()
         doc.add_paragraph(final_text)
-        output_docx_path = directory_path + 'files/' + file_path[:-4] + 'docx'
+        output_docx_path = directory_path + 'files/' + file_path[:-5] + '.docx'
         if os.path.exists(output_docx_path):
             os.remove(output_docx_path)
+        
+        # highlight_text_with_stars(doc)
         doc.save(output_docx_path)
 
 
