@@ -22,10 +22,12 @@ async def create_job(audio_file: UploadFile, db_session: AsyncSession = Depends(
               audio_file=audio_file)
     await job.save(db_session)
     # First task
-    result = celery_app.send_task('worker.tasks.tasks.whisper_task', kwargs={"job_id": job.id})
+    result = celery_app.send_task('worker.tasks.tasks.whisper_task',
+                         kwargs={"job_id": job.id},
+                         link=celery_app.tasks['worker.tasks.tasks.get_result'].s(job.id))
 
-    # Second task will start when the first task finishes
-    result.then(celery_app.send_task, 'worker.tasks.tasks.get_result', kwargs={"job_id": job.id})
+    # # Second task will start when the first task finishes
+    # result.then(celery_app.send_task, 'worker.tasks.tasks.get_result', kwargs={"job_id": job.id})
 
     return job
 
