@@ -63,6 +63,7 @@ def whisper_task(job_id: str):
     waveform = np.mean(waveform.numpy(), axis=0)
 
     prediction_json = pipe(waveform, batch_size=6)
+    del pipe
 
     with DatabaseSessionManager() as db_session:
         whisper_result = WhisperResult(job_id=job_id, text=json.dumps(prediction_json))
@@ -78,18 +79,20 @@ def whisper_task(job_id: str):
 def get_result(job_id: str, keywords: list = None):
     from .front_extraction import parse_file
     from .keywords_pipe import get_keywords
+    from .keywords_filter import filter_text
+    from .llm_test import get_model_and_tokenizer, get_key_stage2_llm
 
     with DatabaseSessionManager() as db_session:
         job = db_session.query(Job).get(job_id)
-        all_key_words, description = get_keywords(json.loads(job.whisper_result.text), '', '/opt/app')
+        all_key_words, description = get_keywords(json.loads(job.whisper_result.text)['text'], '', '/opt/app')
 
-    # keywords_filtered, english_words = filter_text(json.loads(whisper_result.text), keywords, "/opt/app")
+    keywords_filtered, english_words = filter_text(json.loads(job.whisper_result.text), keywords, "/opt/app")
 
-    # model_llm, tokenizer_llm, device = get_model_and_tokenizer()
-    # final_keywords = get_key_stage2_llm(keywords_filtered, whisper_result.text, model_llm, tokenizer_llm, device, "f")
-    # final_keywords = [w.capitalize() for w in final_keywords]
+    model_llm, tokenizer_llm, device = get_model_and_tokenizer()
+    final_keywords = get_key_stage2_llm(keywords_filtered, job.whisper_result.text, model_llm, tokenizer_llm, device, "f")
+    final_keywords = [w.capitalize() for w in final_keywords]
 
-    result = parse_file(whisper_result.text, description)
+    result = parse_file(job.whisper_result.text, description)
 
     with DatabaseSessionManager() as db_session:
         job = db_session.query(Job).get(job_id)

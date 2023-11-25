@@ -39,11 +39,12 @@ def get_key_llm(text, model, tokenizer, device, name, gen_description=True):
                 for keyword in str.split(str.strip(answer), ','):
                     description_dict[keyword] = get_description_llm(keyword, context, model, tokenizer, device)
 
-        with open(f'{str.replace(name, ".mp3", "_keywords.json")}', 'w', encoding='utf-8') as jsf:
-            json.dump(answer_list, jsf, ensure_ascii=False, indent=4)
-        if gen_description:
-            with open(f'{str.replace(name, ".mp3", "_descriptions.json")}', 'w', encoding='utf-8') as jsf:
-                json.dump(description_dict, jsf, ensure_ascii=False, indent=4)
+        if len(name) > 0:
+            with open(f'{str.replace(name, ".mp3", "_keywords.json")}', 'w', encoding='utf-8') as jsf:
+                json.dump(answer_list, jsf, ensure_ascii=False, indent=4)
+            if gen_description:
+                with open(f'{str.replace(name, ".mp3", "_descriptions.json")}', 'w', encoding='utf-8') as jsf:
+                    json.dump(description_dict, jsf, ensure_ascii=False, indent=4)
 
     answer_full_list = []
     for ans in answer_list:
