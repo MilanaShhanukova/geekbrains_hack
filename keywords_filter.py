@@ -74,6 +74,9 @@ def filter_file(lecture_text_path: str, keywords_path: str, save_dir: str):
     with open(os.path.join(save_dir, lecture_num + "_keywords_english.json"), 'w', encoding='utf-8') as jsf:
         json.dump(english_words, jsf, ensure_ascii=False, indent=4)
 
+    if len(keywords_filtered) < 10:
+        return lecture_keywords, english_words
+
     return keywords_filtered, english_words
 
 
