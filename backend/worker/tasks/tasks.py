@@ -11,8 +11,13 @@ import numpy as np
 
 from app.database import DatabaseSessionManager
 from app.models import Job
-from app.models.results import WhisperResult
+from app.models.results import WhisperResult, KeyWordsResult
 from fastapi_storages import FileSystemStorage
+
+from .front_extraction import parse_file
+from .keywords_pipe import get_keywords
+from .llm_test import get_model_and_tokenizer, get_key_stage2_llm
+from .keywords_filter import filter_text
 from ..app import app
 
 @app.task(
@@ -62,12 +67,31 @@ def whisper_task(job_id: str):
     with DatabaseSessionManager() as db_session:
         whisper_result = WhisperResult(job_id=job_id, text=json.dumps(prediction_json))
         whisper_result.save_sync(db_session)
+        job.status = "whisper_done"
+        job.save_sync(db_session)
 
     return prediction_json
-
 
 @app.task(
     # autoretry_for=(Exception,), retry_backoff=True, retry_backoff_max=1800, max_retries=5
 )
-def whisper_task(job_id: str):
-    pass
+def get_result(job_id: str, keywords: list = None):
+    with DatabaseSessionManager() as db_session:
+        whisper_result = db_session.query(WhisperResult).get(job_id)
+    all_key_words, description = get_keywords(json.loads(whisper_result.text), '', '/opt/app')
+
+    # keywords_filtered, english_words = filter_text(json.loads(whisper_result.text), keywords, "/opt/app")
+
+    # model_llm, tokenizer_llm, device = get_model_and_tokenizer()
+    # final_keywords = get_key_stage2_llm(keywords_filtered, whisper_result.text, model_llm, tokenizer_llm, device, "f")
+    # final_keywords = [w.capitalize() for w in final_keywords]
+
+    result = parse_file(whisper_result.text, description)
+
+    with DatabaseSessionManager() as db_session:
+        job = db_session.query(Job).get(job_id)
+        keywords_result = KeyWordsResult(job_id=job_id, keywords=json.dumps(result))
+        keywords_result.save_sync(db_session)
+        job.status = "completed"
+        job.save_sync(db_session)
+    return result

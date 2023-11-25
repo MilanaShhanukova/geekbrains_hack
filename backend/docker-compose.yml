@@ -65,6 +65,7 @@ services:
     volumes:
       - ./worker:/opt/app/worker
       - ./app:/opt/app/app
+      - ./docker/worker.sh:/opt/app/worker.sh
       - ./tmp:/opt/app/tmp
     env_file:
       - .env
@@ -74,7 +75,7 @@ services:
 #    container_name: celerybeat
 #    build:
 ##      <<: *celery-build
-#      dockerfile: docker/Dockerfile.celerybeat
+#      dockerfile: docker/Dockerfile.celeryd.celerybeat
 #    depends_on:
 #      - celeryd
 #    env_file:

@@ -1,10 +1,15 @@
+packaging
 watchdog==2.1.9
 celery[redis]==5.3.5
 transformers
 sentencepiece
 protobuf
 ninja
-flash-attn
+torch==2.1.1
+torchaudio==2.1.1
+torchvision==0.16.1
+https://github.com/Dao-AILab/flash-attention/releases/download/v2.3.4/flash_attn-2.3.4+cu122torch2.1cxx11abiTRUE-cp310-cp310-linux_x86_64.whl
+https://huggingface.co/spacy/ru_core_news_sm/resolve/main/ru_core_news_sm-any-py3-none-any.whl
 accelerate
 peft
 spacy
@@ -29,3 +34,6 @@ sourcery==1.11.0
 celery[redis]==5.3.5
 fastapi-storages[full]==0.2.0
 python-multipart==0.0.6
+keybert
+nltk
+psycopg2-binary

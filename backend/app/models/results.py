@@ -16,6 +16,14 @@ class WhisperResult(Base):
     text = mapped_column(Text)
 
 
+class KeyWordsResult(Base):
+    __tablename__ = "keywords_result"
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, unique=True, default=uuid.uuid4)
+    job_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("job.id", ondelete='CASCADE'))
+    job = relationship("Job", back_populates="keywords_result", uselist=False)
+    keywords = mapped_column(Text)
+
+
 class LLMResult(Base):
     __tablename__ = "llm_result"
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, unique=True, default=uuid.uuid4)

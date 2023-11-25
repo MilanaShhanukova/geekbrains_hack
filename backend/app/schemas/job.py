@@ -37,6 +37,21 @@ class JobResponse(BaseModel):
         description="",
     )
 
+class JobResultResponse(BaseModel):
+    model_config = config
+    id: UUID = Field(
+        title="Id",
+        description="",
+    )
+    status: str = Field(
+        title="",
+        description="",
+    )
+    result: list[dict] = Field(
+        title="",
+        description="",
+    )
+
 
     # class Config:
     #     from_attributes = True

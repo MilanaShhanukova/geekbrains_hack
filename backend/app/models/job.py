@@ -20,6 +20,7 @@ class Job(Base):
     whisper_result = relationship("WhisperResult", back_populates="job", uselist=False)
     llm_result = relationship("LLMResult", back_populates="job", uselist=False)
     parser_result = relationship("ParserResult", back_populates="job", uselist=False)
+    keywords_result = relationship("KeyWordsResult", back_populates="job", uselist=False)
 
 
     @classmethod
