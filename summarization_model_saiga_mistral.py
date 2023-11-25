@@ -1,3 +1,7 @@
+# 1. Download model
+# wget https://huggingface.co/IlyaGusev/saiga2_7b_gguf/resolve/main/model-q4_K.gguf
+# wget https://raw.githubusercontent.com/IlyaGusev/rulm/master/self_instruct/src/interact_llamacpp.py
+
 import fire
 from llama_cpp import Llama
 from docx import Document
