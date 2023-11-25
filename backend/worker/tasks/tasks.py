@@ -69,7 +69,7 @@ def whisper_task(job_id: str):
         whisper_result.save_sync(db_session)
         job.status = "whisper_done"
         job.save_sync(db_session)
-
+    get_result(job_id)
     return prediction_json
 
 @app.task(
