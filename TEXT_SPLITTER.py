@@ -112,7 +112,7 @@ def replace_headers(text, keywords):
         words_to_replace = ' '.join(words_to_replace)
         words_to_replace = '# ' + words_to_replace
 
-        if 'приветствую' in paragraph.lower() or 'привет' in paragraph.lower() or 'всем привет' in paragraph.lower() or 'добрый день' in paragraph.lower() or 'всем привет' in paragraph.lower():
+        if 'приветствую' in paragraph.lower() or 'приветствуем' in paragraph.lower() or 'всем привет' in paragraph.lower() or 'добрый день' in paragraph.lower():
             replaced_paragraph = paragraph.replace('# Абзац', '# Вступление')
         
         elif 'на этом, друзья' in paragraph.lower() or 'всем большое спасибо' in paragraph.lower() or 'до связи' in paragraph.lower() or 'подведем итоги' in paragraph.lower() or 'на сегодня все' in paragraph.lower() or 'до встречи ' in paragraph.lower() or 'счастливо' in paragraph.lower():

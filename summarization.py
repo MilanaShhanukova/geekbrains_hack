@@ -29,7 +29,7 @@ def summarize(model_path, input_file_path, output_file_path, max_chunk_length=40
 
 # Пока для одной лекции 
 model_path = 'E:/dev/hacks3/llm_formalization_text/model-q4_K.gguf'
-input_file_path = 'E:/dev/geekbrains_hack/data/textfiles/raw/lecture_3.json'
-output_file_path = 'E:/dev/geekbrains_hack/data/textfiles/summarized_lectures/lecture_3.txt'
+input_file_path = 'E:/dev/geekbrains_hack/data/textfiles/raw/lecture_5.json'
+output_file_path = 'E:/dev/geekbrains_hack/data/textfiles/summarized_lectures/lecture_5.txt'
 
 summarize(model_path, input_file_path, output_file_path)
