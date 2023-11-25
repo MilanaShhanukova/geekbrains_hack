@@ -81,7 +81,7 @@ def get_result(job_id: str, keywords: list = None):
 
     with DatabaseSessionManager() as db_session:
         job = db_session.query(Job).get(job_id)
-    all_key_words, description = get_keywords(json.loads(job.whisper_result.text), '', '/opt/app')
+        all_key_words, description = get_keywords(json.loads(job.whisper_result.text), '', '/opt/app')
 
     # keywords_filtered, english_words = filter_text(json.loads(whisper_result.text), keywords, "/opt/app")
 
