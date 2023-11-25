@@ -8,8 +8,8 @@ import json
 import os
 import re
 import argparse
-from llm_test import get_key_llm, get_model_and_tokenizer, get_key_stage2_llm
-from keywords_filter import filter_file
+from .llm_test import get_key_llm, get_model_and_tokenizer, get_key_stage2_llm
+from .keywords_filter import filter_file
 from tqdm import tqdm
 import glob
 
