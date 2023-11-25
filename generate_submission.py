@@ -6,7 +6,7 @@ from keywords_filter import filter_file
 from llm_test import get_key_stage2_llm, get_model_and_tokenizer
 import pandas as pd
 
-test_dir = 'test_data/audiofiles/'
+test_dir = 'new_test/audiofiles/'
 save_dir_raw = 'test_result/raw/'
 save_dir_key = 'test_result/keywords/'
 save_dir_end = 'test_result/'
@@ -22,7 +22,7 @@ for f in os.listdir(test_dir):
             json.dump(text, jsf, ensure_ascii=False, indent=4)
 
         # 2 step keyword_result + глоссарий мб
-        keywords, description = get_keywords(text['text'], f, save_dir_raw, gen_description=True)
+        keywords, description = get_keywords(text['text'], f, save_dir_raw, gen_description=False)
         print(description)
         if description is not None:
             pass
