@@ -14,8 +14,8 @@ from app.models import Job
 from app.models.results import WhisperResult, KeyWordsResult
 from fastapi_storages import FileSystemStorage
 
-from .front_extraction import parse_file
-from .keywords_pipe import get_keywords
+# from .front_extraction import parse_file
+# from .keywords_pipe import get_keywords
 # from .llm_test import get_model_and_tokenizer, get_key_stage2_llm
 # from .keywords_filter import filter_text
 from ..app import app
@@ -76,6 +76,9 @@ def whisper_task(job_id: str):
     # autoretry_for=(Exception,), retry_backoff=True, retry_backoff_max=1800, max_retries=5
 )
 def get_result(job_id: str, keywords: list = None):
+    from .front_extraction import parse_file
+    from .keywords_pipe import get_keywords
+
     with DatabaseSessionManager() as db_session:
         whisper_result = db_session.query(WhisperResult).get(job_id)
     all_key_words, description = get_keywords(json.loads(whisper_result.text), '', '/opt/app')
