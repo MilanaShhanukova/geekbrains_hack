@@ -80,8 +80,8 @@ def get_result(job_id: str, keywords: list = None):
     from .keywords_pipe import get_keywords
 
     with DatabaseSessionManager() as db_session:
-        whisper_result = db_session.query(WhisperResult).get(job_id)
-    all_key_words, description = get_keywords(json.loads(whisper_result.text), '', '/opt/app')
+        job = db_session.query(Job).get(job_id)
+    all_key_words, description = get_keywords(json.loads(job.whisper_result.text), '', '/opt/app')
 
     # keywords_filtered, english_words = filter_text(json.loads(whisper_result.text), keywords, "/opt/app")
 
