@@ -65,7 +65,6 @@ services:
     volumes:
       - ./worker:/opt/app/worker
       - ./app:/opt/app/app
-      - ./docker/worker.sh:/opt/app/worker.sh
       - ./tmp:/opt/app/tmp
     env_file:
       - .env
