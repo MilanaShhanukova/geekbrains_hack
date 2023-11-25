@@ -16,8 +16,8 @@ from fastapi_storages import FileSystemStorage
 
 from .front_extraction import parse_file
 from .keywords_pipe import get_keywords
-from .llm_test import get_model_and_tokenizer, get_key_stage2_llm
-from .keywords_filter import filter_text
+# from .llm_test import get_model_and_tokenizer, get_key_stage2_llm
+# from .keywords_filter import filter_text
 from ..app import app
 
 @app.task(
