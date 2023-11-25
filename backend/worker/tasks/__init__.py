@@ -1,1 +1,1 @@
-from .tasks import whisper_task
+from .tasks import *
