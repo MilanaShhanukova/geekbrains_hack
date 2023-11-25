@@ -16,7 +16,7 @@ def summarize(model_path, input_file_path, output_file_path, max_chunk_length=40
     summaries = []
     with tqdm(total=len(chunks)) as pbar:
         for chunk in chunks:
-            prompt_text = 'Напиши суммаризацию следующего текста в нескольких предложениях:'
+            prompt_text = 'Напиши суммаризацию следующего текста в пяти предложениях:'
             input_text = f"{prompt_text} '{chunk}'"
             print()
             print('INPUT_TEXT: ', input_text, '\n')
@@ -29,7 +29,7 @@ def summarize(model_path, input_file_path, output_file_path, max_chunk_length=40
 
 # Пока для одной лекции
 model_path = 'E:/dev/hacks3/llm_formalization_text/model-q4_K.gguf'
-input_file_path = 'E:/dev/geekbrains_hack/data/textfiles/raw/lecture_1.json'
-output_file_path = 'E:/dev/geekbrains_hack/data/textfiles/summarized_lectures/lecture_1.txt'
+input_file_path = 'E:/dev/geekbrains_hack/data/textfiles/raw/lecture_2.json'
+output_file_path = 'E:/dev/geekbrains_hack/data/textfiles/summarized_lectures/lecture_2.txt'
 
 summarize(model_path, input_file_path, output_file_path)

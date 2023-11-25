@@ -69,6 +69,7 @@ def interact(
         token_str = model.detokenize([token]).decode("utf-8", errors="ignore")
         tokens.append(token)
         if token == model.token_eos():
+            tokens.append('\n')
             break
         print(token_str, end="", flush=True)
         with open(output_file_path, 'a', encoding='utf-8') as file:
