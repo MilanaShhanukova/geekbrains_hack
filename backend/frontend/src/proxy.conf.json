@@ -1,0 +1,14 @@
+{
+    "/v1/*": {
+        "target": "http://fsap_app:8000",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/v1": ""
+        },
+        "logLevel": "debug",
+        "headers": {
+            "Connection": "keep-alive"
+        }
+    }
+}

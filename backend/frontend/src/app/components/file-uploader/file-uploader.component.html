@@ -1,0 +1,26 @@
+<file-upload [control]="control" class="file-upload">
+  <ng-template
+    let-isFileDragDropAvailable="isFileDragDropAvailable"
+    c
+    #placeholder
+  >
+    <div class="wrapper" *ngIf="control.size === 0">
+      <nb-icon
+        icon="cloud-upload"
+        class="upload-icon"
+        status="default"
+      ></nb-icon>
+
+      <div class="upload-text">
+        <ng-container
+          *ngIf="isFileDragDropAvailable; else isNotDragDropAvailable"
+        >
+          <b>Перетащи файл или кликни, чтобы загрузить аудиозапись</b><br />
+        </ng-container>
+        <ng-template #isNotDragDropAvailable>
+          <b>Кликни, чтобы выбрать аудиозапись</b>
+        </ng-template>
+      </div>
+    </div>
+  </ng-template>
+</file-upload>

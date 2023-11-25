@@ -1,0 +1,7 @@
+.search-input {
+  max-width: 500px;
+
+  &:focus {
+    min-width: 100%;
+  }
+}

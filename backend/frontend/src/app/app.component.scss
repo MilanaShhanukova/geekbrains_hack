@@ -1,0 +1,10 @@
+.header {
+  width: 100%;
+}
+
+.sidebar {
+  ::ng-deep .main-container-fixed {
+    position: relative !important;
+    top: 0 !important;
+  }
+}

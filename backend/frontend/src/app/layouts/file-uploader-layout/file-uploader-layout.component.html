@@ -1,0 +1,15 @@
+<div
+  class="loading-container"
+  *ngIf="(audioStatus$ | async)?.loading; else upload"
+>
+  <hackaton-speech2text-glossary-audio-recognition-loader></hackaton-speech2text-glossary-audio-recognition-loader>
+
+  <div class="text-container">
+    <h4>Распознаю текст аудиозаписи</h4>
+    <button nbButton status="danger" (click)="cancelLoading()">Отменить</button>
+  </div>
+</div>
+
+<ng-template #upload>
+  <hackaton-speech2text-glossary-file-uploader></hackaton-speech2text-glossary-file-uploader>
+</ng-template>

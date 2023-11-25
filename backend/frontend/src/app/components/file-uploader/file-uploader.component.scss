@@ -1,0 +1,19 @@
+.upload-text {
+  text-align: center;
+}
+
+.file-upload {
+  background: transparent;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.upload-icon {
+  width: 36px;
+  height: 36px;
+}

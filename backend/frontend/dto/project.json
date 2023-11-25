@@ -1,0 +1,26 @@
+{
+  "name": "dto",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "dto/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/./dto",
+        "main": "dto/src/index.ts",
+        "tsConfig": "dto/tsconfig.lib.json",
+        "assets": ["dto/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["dto/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
